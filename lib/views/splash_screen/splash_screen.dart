@@ -1,7 +1,9 @@
 import 'package:ecommerce_shopping/consts/colors.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:ecommerce_shopping/views/auth/login_screen.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,6 +13,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  // creating a method for change a screen
+
+  changeScreen() {
+    Future.delayed(Duration(seconds: 3), () {
+      // using GetX
+      Get.to(() => LoginScreen());
+    });
+  }
+
+  @override
+  void initState() {
+    changeScreen();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
