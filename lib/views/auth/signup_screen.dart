@@ -7,7 +7,13 @@ import 'package:ecommerce_shopping/widgets_common/login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  bool? isCheak = false;
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -34,9 +40,14 @@ class SignUp extends StatelessWidget {
               Row(
                 children: [
                   Checkbox(
-                    checkColor: redColor,
-                    value: false,
-                    onChanged: (newValue) {},
+                    activeColor: redColor,
+                    checkColor: whiteColor,
+                    value: isCheak,
+                    onChanged: (newValue) {
+                      setState(() {
+                        isCheak = newValue;
+                      });
+                    },
                   ),
                   8.widthBox,
                   Expanded(
@@ -45,25 +56,25 @@ class SignUp extends StatelessWidget {
                         TextSpan(
                             text: "I agree to the ",
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: fontGrey,
                             )),
                         TextSpan(
                             text: termAndCond,
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: redColor,
                             )),
                         TextSpan(
                             text: " & ",
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: fontGrey,
                             )),
                         TextSpan(
                             text: privacyPolicy,
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: fontGrey,
                             )),
                       ]),
@@ -73,7 +84,7 @@ class SignUp extends StatelessWidget {
               ),
               5.heightBox,
               loginButton(
-                      color: redColor,
+                      color: isCheak == true ? redColor : lightGrey,
                       title: Text(
                         "Sign up",
                         style: TextStyle(
@@ -87,26 +98,15 @@ class SignUp extends StatelessWidget {
                   .width(context.screenWidth - 50)
                   .make(),
               10.heightBox,
-              RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                    text: alreadyHaveAccount,
-                    style: TextStyle(
-                      fontFamily: bold,
-                      color: fontGrey,
-                    ),
-                  ),
-                  TextSpan(
-                    text: login,
-                    style: TextStyle(
-                      fontFamily: bold,
-                      color: redColor,
-                    ),
-                  ),
-                ]),
-              ).onTap(() {
-                Get.back();
-              })
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  alreadyHaveAccount.text.color(fontGrey).make(),
+                  login.text.color(redColor).make().onTap(() {
+                    Get.back();
+                  })
+                ],
+              ),
             ],
           )
               .box
