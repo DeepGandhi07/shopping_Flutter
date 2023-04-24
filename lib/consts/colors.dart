@@ -8,3 +8,4 @@ const Color lightGrey = Color.fromRGBO(239, 239, 239, 1);
 const Color redColor = Color.fromRGBO(230, 46, 4, 1);
 const Color golden = Color.fromRGBO(255, 168, 0, 1);
 const Color blueColor = Color(0xff287FF0);
+const Color lightGolden = Color(0xffFEEAD01);

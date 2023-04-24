@@ -1,4 +1,5 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:ecommerce_shopping/consts/social_list.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
@@ -41,7 +42,41 @@ class LoginScreen extends StatelessWidget {
                       onPress: () {})
                   .box
                   .width(context.screenWidth - 50)
-                  .make()
+                  .make(),
+              10.heightBox,
+              createNewAccount.text.color(fontGrey).make(),
+              5.heightBox,
+              loginButton(
+                      color: lightGolden,
+                      title: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                      textColor: whiteColor,
+                      onPress: () {})
+                  .box
+                  .width(context.screenWidth - 50)
+                  .make(),
+              10.heightBox,
+              loginWith.text.color(fontGrey).make(),
+              10.heightBox,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  3,
+                  (index) => CircleAvatar(
+                    backgroundColor: lightGrey,
+                    radius: 25,
+                    child: Image.asset(
+                      socialIconList[index],
+                      width: 30,
+                    ),
+                  ),
+                ),
+              ),
             ],
           )
               .box
