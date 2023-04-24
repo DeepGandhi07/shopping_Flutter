@@ -1,10 +1,12 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/views/auth/signup_screen.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
 import 'package:ecommerce_shopping/widgets_common/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -48,19 +50,18 @@ class LoginScreen extends StatelessWidget {
               createNewAccount.text.color(fontGrey).make(),
               5.heightBox,
               loginButton(
-                      color: lightGolden,
-                      title: Text(
-                        "Sign up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      textColor: whiteColor,
-                      onPress: () {})
-                  .box
-                  .width(context.screenWidth - 50)
-                  .make(),
+                  color: lightGolden,
+                  title: Text(
+                    "Sign up",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  textColor: whiteColor,
+                  onPress: () {
+                    Get.to(() => SignUp());
+                  }).box.width(context.screenWidth - 50).make(),
               10.heightBox,
               loginWith.text.color(fontGrey).make(),
               10.heightBox,
