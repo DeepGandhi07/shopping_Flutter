@@ -14,15 +14,18 @@ class LoginScreen extends StatelessWidget {
       body: Center(
         child: Column(children: [
           (context.screenHeight * 0.1).heightBox,
-          appLogoWidget(),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+          appLogoWidget(),
           10.heightBox,
           "Login in to $appname".text.fontFamily(bold).white.size(18).make(),
           10.heightBox,
           Column(
             children: [
               customColorField(title: email, hint: emailHint),
-              10.heightBox,
               customColorField(title: password, hint: passwordHint),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                      onPressed: () {}, child: forgetPassword.text.make()))
             ],
           )
               .box

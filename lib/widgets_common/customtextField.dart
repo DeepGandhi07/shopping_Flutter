@@ -10,15 +10,18 @@ Widget customColorField({String? title, String? hint, controller}) {
       TextFormField(
         // controller: controller,
         decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(fontFamily: semibold, color: textfieldGrey),
-            isDense: true,
-            fillColor: lightGrey,
-            filled: true,
-            border: InputBorder.none,
-            focusedBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: redColor))),
-      )
+          hintText: hint,
+          hintStyle: TextStyle(fontFamily: semibold, color: textfieldGrey),
+          isDense: true,
+          fillColor: lightGrey,
+          filled: true,
+          border: InputBorder.none,
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: redColor),
+          ),
+        ),
+      ),
+      5.heightBox,
     ],
   );
 }
