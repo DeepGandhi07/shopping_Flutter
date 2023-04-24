@@ -6,9 +6,7 @@ import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
 import 'package:ecommerce_shopping/widgets_common/login_button.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
+class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return bgWidget(
