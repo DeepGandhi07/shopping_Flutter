@@ -5,6 +5,7 @@ import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
 import 'package:ecommerce_shopping/widgets_common/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUp extends StatelessWidget {
   @override
@@ -17,36 +18,62 @@ class SignUp extends StatelessWidget {
           (context.screenHeight * 0.1).heightBox,
           appLogoWidget(),
           10.heightBox,
-          "Login in to $appname".text.fontFamily(bold).white.size(18).make(),
+          "Join the $appname".text.fontFamily(bold).white.size(18).make(),
           15.heightBox,
           Column(
             children: [
+              customColorField(title: name, hint: nameHint),
               customColorField(title: email, hint: emailHint),
               customColorField(title: password, hint: passwordHint),
+              customColorField(title: retypePassword, hint: passwordHint),
               Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                       onPressed: () {}, child: forgetPassword.text.make())),
               5.heightBox,
-              loginButton(
-                      color: redColor,
-                      title: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      textColor: whiteColor,
-                      onPress: () {})
-                  .box
-                  .width(context.screenWidth - 50)
-                  .make(),
-              10.heightBox,
-              createNewAccount.text.color(fontGrey).make(),
+              Row(
+                children: [
+                  Checkbox(
+                    checkColor: redColor,
+                    value: false,
+                    onChanged: (newValue) {},
+                  ),
+                  8.widthBox,
+                  Expanded(
+                    child: RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                            text: "I agree to the ",
+                            style: TextStyle(
+                              fontFamily: bold,
+                              color: fontGrey,
+                            )),
+                        TextSpan(
+                            text: termAndCond,
+                            style: TextStyle(
+                              fontFamily: bold,
+                              color: redColor,
+                            )),
+                        TextSpan(
+                            text: " & ",
+                            style: TextStyle(
+                              fontFamily: bold,
+                              color: fontGrey,
+                            )),
+                        TextSpan(
+                            text: privacyPolicy,
+                            style: TextStyle(
+                              fontFamily: bold,
+                              color: fontGrey,
+                            )),
+                      ]),
+                    ),
+                  ),
+                ],
+              ),
               5.heightBox,
               loginButton(
-                      color: lightGolden,
+                      color: redColor,
                       title: Text(
                         "Sign up",
                         style: TextStyle(
@@ -60,25 +87,26 @@ class SignUp extends StatelessWidget {
                   .width(context.screenWidth - 50)
                   .make(),
               10.heightBox,
-              loginWith.text.color(fontGrey).make(),
-              10.heightBox,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  3,
-                  (index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      backgroundColor: lightGrey,
-                      radius: 25,
-                      child: Image.asset(
-                        socialIconList[index],
-                        width: 30,
-                      ),
+              RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                    text: alreadyHaveAccount,
+                    style: TextStyle(
+                      fontFamily: bold,
+                      color: fontGrey,
                     ),
                   ),
-                ),
-              ),
+                  TextSpan(
+                    text: login,
+                    style: TextStyle(
+                      fontFamily: bold,
+                      color: redColor,
+                    ),
+                  ),
+                ]),
+              ).onTap(() {
+                Get.back();
+              })
             ],
           )
               .box
