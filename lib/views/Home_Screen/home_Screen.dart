@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopping/consts/colors.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:ecommerce_shopping/consts/social_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,6 +17,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              alignment: Alignment.center,
+              height: 60,
               color: lightGrey,
               child: TextFormField(
                 decoration: InputDecoration(
@@ -27,6 +30,20 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Swipers Brands
+            VxSwiper.builder(
+              aspectRatio: 16 / 9,
+              autoPlay: true,
+              height: 150,
+              enlargeCenterPage: true,
+              itemCount: slidersList.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  slidersList[index],
+                  fit: BoxFit.fill,
+                ).box.rounded.clip(Clip.antiAlias).make();
+              },
+            )
           ],
         ),
       ),
