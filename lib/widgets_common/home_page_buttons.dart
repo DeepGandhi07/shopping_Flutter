@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ecommerce_shopping/consts/consts.dart';
 
-Widget homeButtons() {
+Widget homeButtons({height, width, icon, title, onPress}) {
   return Container(
     child: Column(
       children: [
@@ -11,8 +11,8 @@ Widget homeButtons() {
           width: 26,
         ),
         5.heightBox,
-        deal.text.fontFamily(semibold).color(darkFontGrey).make()
+        todayDeal.text.fontFamily(semibold).color(darkFontGrey).make()
       ],
-    ).box.rounded.white.make(),
+    ).box.rounded.white.size(width, height).make(),
   );
 }
