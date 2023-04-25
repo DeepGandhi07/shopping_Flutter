@@ -1,6 +1,7 @@
 import 'package:ecommerce_shopping/consts/colors.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/widgets_common/home_page_buttons.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -41,8 +42,18 @@ class HomeScreen extends StatelessWidget {
                 return Image.asset(
                   slidersList[index],
                   fit: BoxFit.fill,
-                ).box.rounded.clip(Clip.antiAlias).make();
+                )
+                    .box
+                    .rounded
+                    .clip(Clip.antiAlias)
+                    .margin(EdgeInsets.symmetric(horizontal: 8))
+                    .make();
               },
+            ),
+            10.heightBox,
+            //Deals Button
+            Row(
+              children: List.generate(2, (index) => homeButtons()),
             )
           ],
         ),
