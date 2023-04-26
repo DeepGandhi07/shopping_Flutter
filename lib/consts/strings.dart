@@ -28,3 +28,11 @@ const topCate = "Top Categories";
 const brands = "Brands";
 const topSell = "Top Sellers";
 const furCate = "Future Categories";
+const womenDress = "Women Dresses";
+const girlWatches = "Girls Watches";
+const mobilePhone = "Mobile Phone";
+const boysGlasses = "Boys Glasses";
+const tShirts = "TShirts";
+const girlsDress = "Girls Dresses";
+
+const featureProduct = "Feature Products";
