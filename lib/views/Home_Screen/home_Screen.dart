@@ -53,14 +53,16 @@ class HomeScreen extends StatelessWidget {
             10.heightBox,
             //Deals Button
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(
-                  2,
-                  (index) => homeButtons(
-                        height: context.screenHeight * 0.2,
-                        width: context.screenWidth / 2.5,
-                        icon: index == 0 ? icTodaysDeal : icFlashDeal,
-                        title: index == 0 ? todayDeal : flashSale,
-                      )),
+                2,
+                (index) => homeButtons(
+                  height: context.screenHeight * 0.15,
+                  width: context.screenWidth / 2.5,
+                  icon: index == 0 ? icTodaysDeal : icFlashDeal,
+                  title: index == 0 ? todayDeal : flashSale,
+                ),
+              ),
             )
           ],
         ),
