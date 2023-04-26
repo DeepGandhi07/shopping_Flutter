@@ -65,6 +65,8 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             15.heightBox,
+
+            //Second Swiper
             VxSwiper.builder(
               aspectRatio: 16 / 9,
               autoPlay: true,
@@ -84,7 +86,6 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             10.heightBox,
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: List.generate(
