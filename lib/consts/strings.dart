@@ -47,3 +47,12 @@ const sports = "Sports";
 const cosmetics = "Cosmetics";
 const cellPhone = "CellPhone & Tab";
 const furniture = "Furniture";
+
+//Item details Strings
+
+const video = "Video",
+    reviews = "Reviews",
+    returnPolicy = "Return Policy",
+    sellerPolicy = "Seller Policy",
+    supportPolicy = "Support Policy",
+    productYouMayLike = "Product You May also Like ";
