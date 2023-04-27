@@ -1,3 +1,5 @@
+import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
 
@@ -6,8 +8,37 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-    );
+    return bgWidget(
+        child: Scaffold(
+      appBar: AppBar(
+        title: categories.text.fontFamily(bold).white.make(),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(12),
+        child: GridView.builder(
+          shrinkWrap: true,
+          itemCount: 9,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              mainAxisExtent: 200),
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                Image.asset(
+                  categoryImage[index],
+                  height: 120,
+                  width: 200,
+                  fit: BoxFit.cover,
+                ),
+                10.heightBox,
+                categoryList[index].text.color(darkFontGrey).make(),
+              ],
+            ).box.white.roundedSM.clip(Clip.antiAlias).outerShadowSm.make();
+          },
+        ),
+      ),
+    ));
   }
 }
