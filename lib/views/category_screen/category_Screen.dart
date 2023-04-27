@@ -1,7 +1,9 @@
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/views/category_screen/category_details.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:get/get.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -33,9 +35,26 @@ class CategoryScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 10.heightBox,
-                categoryList[index].text.color(darkFontGrey).make(),
+                categoryList[index]
+                    .text
+                    .color(darkFontGrey)
+                    .align(TextAlign.center)
+                    .make(),
               ],
-            ).box.white.roundedSM.clip(Clip.antiAlias).outerShadowSm.make();
+            )
+                .box
+                .white
+                .roundedSM
+                .clip(Clip.antiAlias)
+                .outerShadowSm
+                .make()
+                .onTap(() {
+              Get.to(
+                () => CategoryDetails(
+                  title: categoryList[index],
+                ),
+              );
+            });
           },
         ),
       ),
