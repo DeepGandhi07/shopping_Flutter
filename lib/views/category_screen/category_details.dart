@@ -1,6 +1,9 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/views/category_screen/item_details.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String title;
@@ -87,7 +90,10 @@ class CategoryDetails extends StatelessWidget {
                         .padding(
                           EdgeInsets.all(12),
                         )
-                        .make();
+                        .make()
+                        .onTap(() {
+                      Get.to(() => ItemDetails(title: "Demo"));
+                    });
                   },
                 ),
               )

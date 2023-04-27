@@ -21,7 +21,13 @@ class MyApp extends StatelessWidget {
       title: 'App',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          iconTheme: IconThemeData(
+            color: darkFontGrey,
+          ),
+        ),
         fontFamily: regular,
       ),
       home: SplashScreen(),
