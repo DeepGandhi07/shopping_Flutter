@@ -13,12 +13,12 @@ class ProfileScreen extends StatelessWidget {
     return bgWidget(
       child: Scaffold(
         body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: [
-                //Edit Profile button
-                Align(
+          child: Column(
+            children: [
+              //Edit Profile button
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
                   alignment: Alignment.topRight,
                   child: Icon(
                     Icons.edit,
@@ -27,9 +27,12 @@ class ProfileScreen extends StatelessWidget {
                 ).onTap(
                   () {},
                 ),
+              ),
 
-                //User Details Section
-                Row(
+              //User Details Section
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
                   children: [
                     Image.asset(imgProfile, width: 100, fit: BoxFit.cover)
                         .box
@@ -56,41 +59,60 @@ class ProfileScreen extends StatelessWidget {
                     )
                   ],
                 ),
+              ),
 
-                20.heightBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    detailsCard(
-                        width: (context.width / 3.4),
-                        count: "00",
-                        title: "in your cart"),
-                    detailsCard(
-                        width: (context.width / 3.4),
-                        count: "00",
-                        title: "in your Wishlist"),
-                    detailsCard(
-                        width: (context.width / 3.4),
-                        count: "00",
-                        title: "your orders"),
-                  ],
-                ),
+              20.heightBox,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  detailsCard(
+                      width: (context.width / 3.4),
+                      count: "00",
+                      title: "in your cart"),
+                  detailsCard(
+                      width: (context.width / 3.4),
+                      count: "00",
+                      title: "in your Wishlist"),
+                  detailsCard(
+                      width: (context.width / 3.4),
+                      count: "00",
+                      title: "your orders"),
+                ],
+              ),
 
-                //Buttons section
-                ListView.separated(
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        color: lightGrey,
-                      );
-                    },
-                    itemCount: profileButtonsList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title: "${profileButtonsList[index]}".text.make(),
-                      );
-                    })
-              ],
-            ),
+              //Buttons section
+              ListView.separated(
+                shrinkWrap: true,
+                separatorBuilder: (context, index) {
+                  return Divider(
+                    color: lightGrey,
+                  );
+                },
+                itemCount: profileButtonsList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    leading: Image.asset(profileButtonsIcon[index], width: 22),
+                    title: "${profileButtonsList[index]}"
+                        .text
+                        .fontFamily(semibold)
+                        .color(darkFontGrey)
+                        .make(),
+                  );
+                },
+              )
+                  .box
+                  .white
+                  .rounded
+                  .margin(EdgeInsets.all(12))
+                  .shadowSm
+                  .padding(
+                    EdgeInsets.symmetric(horizontal: 16),
+                  )
+                  .make()
+                  .box
+                  .color(redColor)
+                  .make()
+            ],
           ),
         ),
       ),
