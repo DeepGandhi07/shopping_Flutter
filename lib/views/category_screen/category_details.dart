@@ -45,10 +45,14 @@ class CategoryDetails extends StatelessWidget {
 
               Expanded(
                 child: GridView.builder(
+                  physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: 6,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, mainAxisExtent: 250),
+                      crossAxisCount: 2,
+                      mainAxisExtent: 250,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8),
                   itemBuilder: (context, index) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,6 +80,7 @@ class CategoryDetails extends StatelessWidget {
                         .box
                         .white
                         .roundedSM
+                        .outerShadowXl
                         .margin(
                           EdgeInsets.symmetric(horizontal: 4),
                         )
