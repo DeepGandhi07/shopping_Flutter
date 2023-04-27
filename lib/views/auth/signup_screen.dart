@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/controller/auth_controller.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
@@ -14,6 +15,14 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool? isCheak = false;
+
+  var controller = Get.put(AuthController());
+
+  //text controllers
+  var nameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordRetypeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return bgWidget(
@@ -28,10 +37,18 @@ class _SignUpState extends State<SignUp> {
           15.heightBox,
           Column(
             children: [
-              customColorField(title: name, hint: nameHint),
-              customColorField(title: email, hint: emailHint),
-              customColorField(title: password, hint: passwordHint),
-              customColorField(title: retypePassword, hint: passwordHint),
+              customColorField(
+                  title: name, hint: nameHint, controller: nameController),
+              customColorField(
+                  title: email, hint: emailHint, controller: emailController),
+              customColorField(
+                  title: password,
+                  hint: passwordHint,
+                  controller: passwordController),
+              customColorField(
+                  title: retypePassword,
+                  hint: passwordHint,
+                  controller: passwordRetypeController),
               Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(

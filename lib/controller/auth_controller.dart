@@ -38,7 +38,7 @@ class AuthController extends GetxController {
 
   // Storing data method
 
-  storeUserData({name, password, email, imageUrl}) async {
+  storeUserData({name, password, email}) async {
     DocumentReference store =
         await firestore.collection(usersCollection).doc(currentUser!.uid);
     store.set({
@@ -47,5 +47,17 @@ class AuthController extends GetxController {
       'email': email,
       'imageUrl': '',
     });
+  }
+
+  //SignOut method
+  signOutMethod(context) async {
+    try {
+      await auth.signOut();
+    } catch (e) {
+      VxToast.show(
+        context,
+        msg: e.toString(),
+      );
+    }
   }
 }

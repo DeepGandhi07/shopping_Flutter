@@ -8,7 +8,7 @@ Widget customColorField({String? title, String? hint, controller}) {
       title!.text.color(redColor).fontFamily(semibold).size(16).make(),
       5.heightBox,
       TextFormField(
-        // controller: controller,
+        controller: controller,
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: TextStyle(fontFamily: semibold, color: textfieldGrey),
