@@ -3,7 +3,6 @@ import 'package:ecommerce_shopping/views/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer';
-
 import 'package:get/get.dart';
 
 void main() async {
