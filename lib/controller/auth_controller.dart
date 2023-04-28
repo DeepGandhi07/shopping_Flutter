@@ -2,23 +2,42 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  // textControllers
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   // Login method
-  Future<UserCredential?> loginMethod({email, password, context}) async {
+  Future<UserCredential?> loginMethod({context}) async {
     UserCredential? userCredential;
 
     try {
-      await auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: emailController.text, password: passwordController.text);
+      return userCredential;
     } on FirebaseAuthException catch (e) {
-      VxToast.show(
-        context,
-        msg: e.toString(),
-      );
+      if (context != null) {
+        VxToast.show(
+          context,
+          msg: e.toString(),
+        );
+      }
+      return null;
     }
-    return userCredential;
   }
+  //   try {
+  //     await auth.signInWithEmailAndPassword(
+  //         email: emailController.text, password: passwordController.text);
+  //   } on FirebaseAuthException catch (e) {
+  //     VxToast.show(
+  //       context,
+  //       msg: e.toString(),
+  //     );
+  //   }
+  //   return userCredential;
+  // }
 
   //signUp method
   Future<UserCredential?> signUpMethod({email, password, context}) async {
@@ -39,14 +58,16 @@ class AuthController extends GetxController {
   // Storing data method
 
   storeUserData({name, password, email}) async {
-    DocumentReference store =
-        await firestore.collection(usersCollection).doc(currentUser!.uid);
-    store.set({
-      'name': name,
-      'password': password,
-      'email': email,
-      'imageUrl': '',
-    });
+    if (currentUser != null) {
+      DocumentReference store =
+          await firestore.collection(usersCollection).doc(currentUser!.uid);
+      store.set({
+        'name': name,
+        'password': password,
+        'email': email,
+        'imageUrl': '',
+      });
+    }
   }
 
   //SignOut method

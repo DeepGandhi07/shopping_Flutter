@@ -1,5 +1,7 @@
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/controller/auth_controller.dart';
 import 'package:ecommerce_shopping/views/Profile_screen/components/details_buttons.dart';
+import 'package:ecommerce_shopping/views/auth/login_screen.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_shopping/consts/consts.dart';
@@ -54,7 +56,10 @@ class ProfileScreen extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                         side: BorderSide(color: whiteColor),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Get.put(AuthController()).signOutMethod(context);
+                        Get.offAll(() => LoginScreen());
+                      },
                       child: "Logout".text.fontFamily(semibold).white.make(),
                     )
                   ],

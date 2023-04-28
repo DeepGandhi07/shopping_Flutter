@@ -1,5 +1,6 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:ecommerce_shopping/consts/social_list.dart';
+import 'package:ecommerce_shopping/controller/auth_controller.dart';
 import 'package:ecommerce_shopping/views/Home_Screen/home.dart';
 import 'package:ecommerce_shopping/views/auth/signup_screen.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
@@ -14,6 +15,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AuthController());
     return bgWidget(
         child: Scaffold(
       resizeToAvoidBottomInset: false,
@@ -26,26 +28,44 @@ class LoginScreen extends StatelessWidget {
           15.heightBox,
           Column(
             children: [
-              customColorField(title: email, hint: emailHint),
-              customColorField(title: password, hint: passwordHint),
+              customColorField(
+                  title: email,
+                  hint: emailHint,
+                  isPass: false,
+                  controller: controller.emailController),
+              customColorField(
+                  title: password,
+                  hint: passwordHint,
+                  isPass: true,
+                  controller: controller.passwordController),
               Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
                       onPressed: () {}, child: forgetPassword.text.make())),
               5.heightBox,
               loginButton(
-                  color: redColor,
-                  title: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+                color: redColor,
+                title: Text(
+                  "Login",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
                   ),
-                  textColor: whiteColor,
-                  onPress: () {
-                    Get.to(() => Home());
-                  }).box.width(context.screenWidth - 50).make(),
+                ),
+                textColor: whiteColor,
+                onPress: () async {
+                  await controller.loginMethod(context: context).then(
+                    (value) {
+                      if (value != null) {
+                        VxToast.show(context, msg: loggedIn);
+                        Get.offAll(
+                          () => Home(),
+                        );
+                      }
+                    },
+                  );
+                },
+              ).box.width(context.screenWidth - 50).make(),
               10.heightBox,
               createNewAccount.text.color(fontGrey).make(),
               5.heightBox,

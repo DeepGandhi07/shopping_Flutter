@@ -1,6 +1,7 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
 import 'package:ecommerce_shopping/consts/social_list.dart';
 import 'package:ecommerce_shopping/controller/auth_controller.dart';
+import 'package:ecommerce_shopping/views/Home_Screen/home.dart';
 import 'package:ecommerce_shopping/widgets_common/app_logo.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
@@ -38,17 +39,25 @@ class _SignUpState extends State<SignUp> {
           Column(
             children: [
               customColorField(
-                  title: name, hint: nameHint, controller: nameController),
+                  title: name,
+                  hint: nameHint,
+                  controller: nameController,
+                  isPass: false),
               customColorField(
-                  title: email, hint: emailHint, controller: emailController),
+                  title: email,
+                  hint: emailHint,
+                  controller: emailController,
+                  isPass: false),
               customColorField(
                   title: password,
                   hint: passwordHint,
-                  controller: passwordController),
+                  controller: passwordController,
+                  isPass: true),
               customColorField(
                   title: retypePassword,
                   hint: passwordHint,
-                  controller: passwordRetypeController),
+                  controller: passwordRetypeController,
+                  isPass: true),
               Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
@@ -101,19 +110,43 @@ class _SignUpState extends State<SignUp> {
               ),
               5.heightBox,
               loginButton(
-                      color: isCheak == true ? redColor : lightGrey,
-                      title: Text(
-                        "Sign up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      textColor: whiteColor,
-                      onPress: () {})
-                  .box
-                  .width(context.screenWidth - 50)
-                  .make(),
+                  color: isCheak == true ? redColor : lightGrey,
+                  title: Text(
+                    "Sign up",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  textColor: whiteColor,
+                  onPress: () async {
+                    if (isCheak != false) {
+                      try {
+                        await controller
+                            .signUpMethod(
+                                context: context,
+                                email: emailController.text,
+                                password: passwordController.text)
+                            .then(
+                          (value) {
+                            return controller.storeUserData(
+                              email: emailController.text,
+                              password: passwordController.text,
+                              name: nameController.text,
+                            );
+                          },
+                        ).then((value) {
+                          VxToast.show(context, msg: loggedIn);
+                          Get.offAll(
+                            () => Home(),
+                          );
+                        });
+                      } catch (e) {
+                        auth.signOut();
+                        VxToast.show(context, msg: e.toString());
+                      }
+                    }
+                  }).box.width(context.screenWidth - 50).make(),
               10.heightBox,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
