@@ -1,6 +1,7 @@
 import 'package:ecommerce_shopping/consts/social_list.dart';
 import 'package:ecommerce_shopping/controller/auth_controller.dart';
 import 'package:ecommerce_shopping/views/Profile_screen/components/details_buttons.dart';
+import 'package:ecommerce_shopping/views/Profile_screen/edit_profile.dart';
 import 'package:ecommerce_shopping/views/auth/login_screen.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,9 @@ class ProfileScreen extends StatelessWidget {
                     color: whiteColor,
                   ),
                 ).onTap(
-                  () {},
+                  () {
+                    Get.to(() => EditProfile());
+                  },
                 ),
               ),
 
@@ -36,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: [
-                    Image.asset(imgProfile, width: 100, fit: BoxFit.cover)
+                    Image.asset(imgProfile2, width: 100, fit: BoxFit.cover)
                         .box
                         .clip(Clip.antiAlias)
                         .roundedFull

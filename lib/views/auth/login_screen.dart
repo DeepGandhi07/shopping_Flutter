@@ -44,29 +44,36 @@ class LoginScreen extends StatelessWidget {
                     child: TextButton(
                         onPressed: () {}, child: forgetPassword.text.make())),
                 5.heightBox,
-                loginButton(
-                  color: redColor,
-                  title: Text(
-                    "Login",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  textColor: whiteColor,
-                  onPress: () async {
-                    await controller.loginMethod(context: context).then(
-                      (value) {
-                        if (value != null) {
-                          VxToast.show(context, msg: loggedIn);
-                          Get.offAll(
-                            () => Home(),
+                controller.isLoading.value
+                    ? CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(redColor),
+                      )
+                    : loginButton(
+                        color: redColor,
+                        title: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        textColor: whiteColor,
+                        onPress: () async {
+                          controller.isLoading(true);
+                          await controller.loginMethod(context: context).then(
+                            (value) {
+                              if (value != null) {
+                                VxToast.show(context, msg: loggedIn);
+                                Get.offAll(
+                                  () => Home(),
+                                );
+                              } else {
+                                controller.isLoading(false);
+                              }
+                            },
                           );
-                        }
-                      },
-                    );
-                  },
-                ).box.width(context.screenWidth - 50).make(),
+                        },
+                      ).box.width(context.screenWidth - 50).make(),
                 10.heightBox,
                 createNewAccount.text.color(fontGrey).make(),
                 5.heightBox,
