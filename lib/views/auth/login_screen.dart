@@ -26,91 +26,93 @@ class LoginScreen extends StatelessWidget {
           10.heightBox,
           "Login in to $appname".text.fontFamily(bold).white.size(18).make(),
           15.heightBox,
-          Column(
-            children: [
-              customColorField(
-                  title: email,
-                  hint: emailHint,
-                  isPass: false,
-                  controller: controller.emailController),
-              customColorField(
-                  title: password,
-                  hint: passwordHint,
-                  isPass: true,
-                  controller: controller.passwordController),
-              Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: () {}, child: forgetPassword.text.make())),
-              5.heightBox,
-              loginButton(
-                color: redColor,
-                title: Text(
-                  "Login",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                textColor: whiteColor,
-                onPress: () async {
-                  await controller.loginMethod(context: context).then(
-                    (value) {
-                      if (value != null) {
-                        VxToast.show(context, msg: loggedIn);
-                        Get.offAll(
-                          () => Home(),
-                        );
-                      }
-                    },
-                  );
-                },
-              ).box.width(context.screenWidth - 50).make(),
-              10.heightBox,
-              createNewAccount.text.color(fontGrey).make(),
-              5.heightBox,
-              loginButton(
-                  color: lightGolden,
+          Obx(
+            () => Column(
+              children: [
+                customColorField(
+                    title: email,
+                    hint: emailHint,
+                    isPass: false,
+                    controller: controller.emailController),
+                customColorField(
+                    title: password,
+                    hint: passwordHint,
+                    isPass: true,
+                    controller: controller.passwordController),
+                Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                        onPressed: () {}, child: forgetPassword.text.make())),
+                5.heightBox,
+                loginButton(
+                  color: redColor,
                   title: Text(
-                    "Sign up",
+                    "Login",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
                     ),
                   ),
                   textColor: whiteColor,
-                  onPress: () {
-                    Get.to(() => SignUp());
-                  }).box.width(context.screenWidth - 50).make(),
-              10.heightBox,
-              loginWith.text.color(fontGrey).make(),
-              10.heightBox,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  3,
-                  (index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      backgroundColor: lightGrey,
-                      radius: 25,
-                      child: Image.asset(
-                        socialIconList[index],
-                        width: 30,
+                  onPress: () async {
+                    await controller.loginMethod(context: context).then(
+                      (value) {
+                        if (value != null) {
+                          VxToast.show(context, msg: loggedIn);
+                          Get.offAll(
+                            () => Home(),
+                          );
+                        }
+                      },
+                    );
+                  },
+                ).box.width(context.screenWidth - 50).make(),
+                10.heightBox,
+                createNewAccount.text.color(fontGrey).make(),
+                5.heightBox,
+                loginButton(
+                    color: lightGolden,
+                    title: Text(
+                      "Sign up",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    textColor: whiteColor,
+                    onPress: () {
+                      Get.to(() => SignUp());
+                    }).box.width(context.screenWidth - 50).make(),
+                10.heightBox,
+                loginWith.text.color(fontGrey).make(),
+                10.heightBox,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    3,
+                    (index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        backgroundColor: lightGrey,
+                        radius: 25,
+                        child: Image.asset(
+                          socialIconList[index],
+                          width: 30,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          )
-              .box
-              .white
-              .rounded
-              .padding(EdgeInsets.all(16))
-              .width(context.screenWidth - 70)
-              .shadowSm
-              .make(),
+              ],
+            )
+                .box
+                .white
+                .rounded
+                .padding(EdgeInsets.all(16))
+                .width(context.screenWidth - 70)
+                .shadowSm
+                .make(),
+          ),
         ]),
       ),
     ));

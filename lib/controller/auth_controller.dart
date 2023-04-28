@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+  var isLoading = false.obs;
   // textControllers
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -66,6 +67,7 @@ class AuthController extends GetxController {
         'password': password,
         'email': email,
         'imageUrl': '',
+        'id': currentUser!.uid,
       });
     }
   }
