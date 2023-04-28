@@ -1,8 +1,10 @@
 import 'package:ecommerce_shopping/consts/consts.dart';
+import 'package:ecommerce_shopping/controller/profile_controller.dart';
 import 'package:ecommerce_shopping/widgets_common/bg_widget.dart';
 import 'package:ecommerce_shopping/widgets_common/customtextField.dart';
 import 'package:ecommerce_shopping/widgets_common/login_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({super.key});
@@ -26,7 +28,9 @@ class EditProfile extends StatelessWidget {
                 .make(),
             10.heightBox,
             loginButton(
-              onPress: () {},
+              onPress: () {
+                Get.find<ProfileController>().chaneImage(context);
+              },
               color: redColor,
               textColor: whiteColor,
               title: Text('change'),
@@ -44,11 +48,14 @@ class EditProfile extends StatelessWidget {
               isPass: true,
             ),
             20.heightBox,
-            loginButton(
-              onPress: () {},
-              color: redColor,
-              textColor: whiteColor,
-              title: Text('Save'),
+            SizedBox(
+              width: context.screenWidth - 60,
+              child: loginButton(
+                onPress: () {},
+                color: redColor,
+                textColor: whiteColor,
+                title: Text('Save'),
+              ),
             ),
           ],
         )
